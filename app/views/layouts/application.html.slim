@@ -1,10 +1,17 @@
 doctype html
 html
   head
-    title LODGlossaey
+    title LOD Glossary | ipm.semantics
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
   body
-    == yield
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      a.navbar-brand href="/"  LOD Glossary
+      #navbar.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            a href="/#sing-in"  Sign in
+    .container
+      == yield
