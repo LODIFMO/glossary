@@ -11,3 +11,11 @@ table.table.table-hover.table-striped
       th Термин
       th Определение
       th
+  tbody
+    - @terms.each do |term|
+      tr
+        td= "#{term.title} (#{term.eng_title})"
+        td= term.description || '-'
+        td
+          a.btn.btn-info.btn-xs href="/terms/#{term.id.to_s}"
+            = fa_icon 'fw eye'
