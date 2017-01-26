@@ -34,6 +34,11 @@ module Myapp
 
     config.generators do |g|
       g.orm :mongoid
+      g.template_engine :slim
+      g.test_framework false
+      g.jbuilder false
+      g.assets false
+      g.helper false
     end
 
     Mongoid.load!('./config/mongoid.yml')
