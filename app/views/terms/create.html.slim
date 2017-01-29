@@ -3,4 +3,6 @@
 
 pre= @term.to_json
 
-= react_component 'TermDescription', {term: @term.to_json, descriptions: []}
+pre= @descriptions.to_json
+
+= react_component 'TermDescription', {term: @term.to_json, descriptions: @descriptions}

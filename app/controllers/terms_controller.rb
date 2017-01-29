@@ -8,6 +8,7 @@ class TermsController < ApplicationController
 
   def create
     @term = Term.create! term_params
+    @descriptions = Term.load_descriptions
   rescue => _e
   end
 
