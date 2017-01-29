@@ -5,6 +5,7 @@ class @TermDescription extends React.Component
     super props
 
   render: ->
+    DescriptionItem = window.DescriptionItem
     div {},
       div { className: "panel panel-default panel-cursor" },
         div { className: "panel-body" }, 'Ut faucibus convallis sem, at rutrum lectus auctor vitae. Ut sagittis, lectus sit amet faucibus malesuada, massa lectus vehicula eros, et maximus risus eros id magna. Donec accumsan tempus molestie. Nunc vel augue sollicitudin, fringilla augue sed, ultrices nunc. In blandit sed arcu sed mattis. Pellentesque iaculis purus eget porta mollis. Vestibulum tincidunt enim sit amet odio dictum posuere. Duis nisi lacus, congue sed nisi sit amet, bibendum sagittis orci. Nam felis ipsum, congue eu gravida vitae, volutpat non libero.'
