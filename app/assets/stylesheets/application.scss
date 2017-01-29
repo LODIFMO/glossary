@@ -15,3 +15,20 @@ body {
 .padding-input {
     padding: 10px;
 }
+
+.panel-select {
+    background-color: beige;
+}
+
+.panel-cursor {
+    cursor: pointer;
+}
+
+.panel-cursor :hover {
+    @extend .panel-danger;
+    @extend .panel-select;
+}
+
+.in-panel {
+    background-color: white;
+}
