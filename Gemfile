@@ -37,6 +37,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap-generators', group: :development
 gem 'slim-rails'
 gem 'react-rails'
+gem "wice_grid", '3.6.0.pre4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
