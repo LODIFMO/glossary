@@ -1,8 +1,4 @@
 .page-header
   h1 Add description
 
-pre= @term.to_json
-
-pre= @descriptions.to_json
-
 = react_component 'TermDescription', {term: @term.to_json, descriptions: @descriptions, authenticity_token: form_authenticity_token}
