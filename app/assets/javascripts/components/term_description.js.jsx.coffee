@@ -3,16 +3,19 @@
 class @TermDescription extends React.Component
   constructor: (props) ->
     super props
+    @state =
+      selected: -1
   
-  descriptionClick: (item) ->
-    console.log item
+  descriptionClick: (item, key) ->
+    console.log this
+    @setState(selected: key)
 
   render: ->
     DescriptionItem = React.createFactory window.DescriptionItem
     descriptions = @props.descriptions
     div {},
       descriptions.map((item, index) =>
-        DescriptionItem key: index, item: item, doClick: @descriptionClick
+        DescriptionItem key: index, index: index, item: item, isSelected: index is @state.selected, parent: @
       )
       div { className: "panel panel-default panel-cursor" },
         div { className: "panel-body" },

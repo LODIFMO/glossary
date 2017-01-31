@@ -5,8 +5,10 @@ class @DescriptionItem extends React.Component
     super props
 
   handleClick: (e) ->
-    @props.doClick @props.item
+    @props.parent.descriptionClick @props.item, @props.index
 
   render: ->
-    div { className: 'panel panel-default panel-cursor', onClick: ((e) => @handleClick(e)) },
+    classN = 'panel panel-default panel-cursor'
+    classN = "#{classN} panel-select" if @props.isSelected
+    div { className: classN, onClick: ((e) => @handleClick(e)) },
       div { className: 'panel-body' }, @props.item
