@@ -1,10 +1,11 @@
-{div, button, textarea} = React.DOM
+{div, button, textarea, form, input} = React.DOM
 
 class @TermDescription extends React.Component
   constructor: (props) ->
     super props
 
   render: ->
+    console.log @props
     DescriptionItem = window.DescriptionItem
     div {},
       div { className: "panel panel-default panel-cursor" },
@@ -17,4 +18,8 @@ class @TermDescription extends React.Component
         div { className: "panel-body" },
           textarea { className: "form-control in-panel" },
       div { className: "form-group" },
-        button { className: "btn btn-success" }, 'Add description'
+        form { action: "/terms/#{@props.term.id}", method: 'POST', acceptCharset: 'UTF-8' },
+          input { type: 'hidden', value: 'some description here...', name: 'term[description]' }
+          input { type: 'hidden', value: @props.authenticity_token, name: 'authenticity_token' }
+          input { type: 'hidden', value: 'put', name: '_method' }
+          button { className: "btn btn-success", type: 'submit' }, 'Add description'

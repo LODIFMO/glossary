@@ -12,7 +12,7 @@ class Term
       title: title,
       eng_title: eng_title,
       uri: uri
-    }.to_s
+    }
   end
 
   # get rus text from rdfs:comment

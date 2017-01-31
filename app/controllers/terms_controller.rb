@@ -17,6 +17,15 @@ class TermsController < ApplicationController
   rescue => _e
   end
 
+  def update
+    byebug
+    @term = Term.find params[:id]
+    @term.description = params[:term][:description]
+    @term.save!
+    redirect_to terms_path
+  rescue => _e
+  end
+
   private
 
   def term_params
