@@ -9,6 +9,9 @@ class @TermDescription extends React.Component
   
   descriptionClick: (item, key) ->
     @setState(selected: key, description: item)
+  
+  handleChange: (event) ->
+    @descriptionClick event.target.value, -1
 
   render: ->
     DescriptionItem = React.createFactory window.DescriptionItem
@@ -19,7 +22,7 @@ class @TermDescription extends React.Component
       )
       div { className: "panel panel-default panel-cursor" },
         div { className: "panel-body" },
-          textarea { className: "form-control in-panel" },
+          textarea { className: "form-control in-panel", onChange: ((e) => @handleChange(e)) },
       div { className: "form-group" },
         form { action: "/terms/#{@props.term.id}", method: 'POST', acceptCharset: 'UTF-8' },
           input { type: 'hidden', value: @state.description, name: 'term[description]' }
