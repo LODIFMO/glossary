@@ -5,10 +5,10 @@ class @TermDescription extends React.Component
     super props
     @state =
       selected: -1
+      description: ''
   
   descriptionClick: (item, key) ->
-    console.log this
-    @setState(selected: key)
+    @setState(selected: key, description: item)
 
   render: ->
     DescriptionItem = React.createFactory window.DescriptionItem
@@ -22,7 +22,7 @@ class @TermDescription extends React.Component
           textarea { className: "form-control in-panel" },
       div { className: "form-group" },
         form { action: "/terms/#{@props.term.id}", method: 'POST', acceptCharset: 'UTF-8' },
-          input { type: 'hidden', value: 'some description here...', name: 'term[description]' }
+          input { type: 'hidden', value: @state.description, name: 'term[description]' }
           input { type: 'hidden', value: @props.authenticity_token, name: 'authenticity_token' }
           input { type: 'hidden', value: 'put', name: '_method' }
           button { className: "btn btn-success", type: 'submit' }, 'Add description'
