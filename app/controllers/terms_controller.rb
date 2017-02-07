@@ -1,4 +1,6 @@
 class TermsController < ApplicationController
+  before_action :authenticate_user!, only: %i(new create update)
+
   def index
     @terms = Term.all
   end
@@ -18,7 +20,6 @@ class TermsController < ApplicationController
   end
 
   def update
-    byebug
     @term = Term.find params[:id]
     @term.description = params[:term][:description]
     @term.save!
