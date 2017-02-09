@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'terms#index'
 
   resources :terms, only: %i(index new create destroy show update)
+
+  get 'pages/about' => 'pages#about'
 end

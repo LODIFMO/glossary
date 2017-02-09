@@ -11,6 +11,8 @@ html
       a.navbar-brand href="/"  LOD Glossary
       #navbar.collapse.navbar-collapse
         ul.nav.navbar-nav
+          li
+            a href="/pages/about" About
           - if current_user.blank?
             li
               a href="/users/sign_in"  Sign in
