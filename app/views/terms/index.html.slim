@@ -17,6 +17,3 @@ table.table.table-hover.table-striped
       tr
         td= "#{term.title} (#{term.eng_title})"
         td= term.description || '-'
-        td
-          a.btn.btn-info.btn-xs href="/terms/#{term.id.to_s}"
-            = fa_icon 'fw eye'
