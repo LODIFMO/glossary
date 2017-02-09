@@ -11,7 +11,8 @@ class TermsController < ApplicationController
   def create
     @term = Term.create! term_params
     @descriptions = @term.load_descriptions
-  rescue => _e
+  rescue => e
+    @error = e.message
   end
 
   def update
