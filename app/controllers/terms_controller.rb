@@ -23,6 +23,13 @@ class TermsController < ApplicationController
   rescue => _e
   end
 
+  def description
+    raise 'missing argument \'term\'' if params[:term].blank?
+    render json: {description: Term.where(eng_title: Regexp.new(params[:term], 'i')).first.description.to_s}, status: :ok
+  rescue => e
+    render json: {message: e.message}, status: :internal_server_error
+  end
+
   private
 
   def term_params
