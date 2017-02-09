@@ -16,13 +16,13 @@ class Term
   end
 
   # get rus text from rdfs:comment
-  def self.upload_rus(sparql)
+  def upload_rus(sparql)
     sparql.query(
       <<-SPARQL
         SELECT DISTINCT ?concept ?description
         WHERE {
           ?concept rdfs:comment ?description .
-          ?concept rdfs:label "#{eng_title.capitalize}"@en .
+          ?concept rdfs:label "#{eng_title}"@en .
           FILTER ( lang(?description) = "ru" )
         }
       SPARQL
@@ -30,13 +30,13 @@ class Term
   end
 
   # get rus text from dbo:abstract
-  def self.upload_rus_mod(sparql)
+  def upload_rus_mod(sparql)
     sparql.query(
       <<-SPARQL
         SELECT DISTINCT ?concept ?description
         WHERE {
           ?concept dbo:abstract ?description .
-          ?concept rdfs:label "#{eng_title.capitalize}"@en .
+          ?concept rdfs:label "#{eng_title}"@en .
           FILTER ( lang(?description) = "ru" )
         }
       SPARQL
@@ -44,13 +44,13 @@ class Term
   end
 
   # get eng text from rdfs:comment
-  def self.upload_eng(sparql)
+  def upload_eng(sparql)
     sparql.query(
       <<-SPARQL
         SELECT DISTINCT ?concept ?description
         WHERE {
           ?concept rdfs:comment ?description .
-          ?concept rdfs:label "#{eng_title.capitalize}"@en .
+          ?concept rdfs:label "#{eng_title}"@en .
           FILTER ( lang(?description) = "en" )
         }
       SPARQL
@@ -58,26 +58,26 @@ class Term
   end
 
   # get eng text from dbo:abstract
-  def self.upload_eng_mod(sparql)
+  def upload_eng_mod(sparql)
     sparql.query(
       <<-SPARQL
         SELECT DISTINCT ?concept ?description
         WHERE {
           ?concept dbo:abstract ?description .
-          ?concept rdfs:label "#{eng_title.capitalize}"@en .
+          ?concept rdfs:label "#{eng_title}"@en .
           FILTER ( lang(?description) = "en" )
         }
       SPARQL
     )
   end
 
-  def self.load_descriptions
+  def load_descriptions
     sparql = SPARQL::Client.new("http://dbpedia.org/sparql")
     solutions = []
-    solutions << upload_rus(sparql)
-    solutions << upload_rus_mod(sparql)
-    solutions << upload_eng(sparql)
-    solutions << upload_eng_mod(sparql)
+    solutions << upload_rus(sparql).first[:description].value
+    solutions << upload_rus_mod(sparql).first[:description].value
+    solutions << upload_eng(sparql).first[:description].value
+    solutions << upload_eng_mod(sparql).first[:description].value
     solutions
   end
 end
