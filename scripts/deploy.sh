@@ -1,0 +1,1 @@
+scp ./glossary.tar docker@104.236.61.47:~/
